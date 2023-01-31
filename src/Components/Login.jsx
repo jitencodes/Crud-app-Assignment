@@ -25,7 +25,7 @@ const Login = () => {
     if (submitType == "login") {
       //  VALIDATING INPUTS AND TRY LOGIN
       if (email == "" || password == "") {
-        window.alert(`All Fields Are Required!`);
+        console.log(`All Fields Are Required!`);
       } else {
         // Login QUERY
         try {
@@ -33,7 +33,7 @@ const Login = () => {
           const res = await axios.post(`/auth/login`, data);
           // console.log(res.data);
           if (typeof res.data === "string") {
-            window.alert(res.data);
+            console.log(res.data);
             setLogin("register");
           } else {
             localStorage.setItem("user", JSON.stringify(res.data));
@@ -41,13 +41,13 @@ const Login = () => {
             Navigate("/");
           }
         } catch (error) {
-          window.alert(error);
+          console.log(error);
         }
       }
     } else {
       //  VALIDATING INPUTS AND TRY REGISTRATION
       if (firstName == "" || lastName == "" || email == "" || password == "") {
-        window.alert(`All Fields Are Required!`);
+        console.log(`All Fields Are Required!`);
       } else {
         // REGISTER QUERY
         try {
@@ -62,10 +62,10 @@ const Login = () => {
           };
           const res = await axios.post(`/auth/register`, data);
           if (typeof res.data === "string") {
-            window.alert(res.data);
+            console.log(res.data);
           }
         } catch (error) {
-          window.alert(error);
+          console.log(error);
         }
       }
       setLogin("login");
